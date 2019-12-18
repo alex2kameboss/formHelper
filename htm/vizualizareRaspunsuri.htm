@@ -1,0 +1,30 @@
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+<br>
+<h1>Raspunsuri pentru eveniment</h1>
+<br>
+<table>
+    <tr>
+        <th>Nr.</th>
+        <th ng-repeat="intrebare in formular">{{intrebare.intrebareText}}</th>
+    </tr>
+    <tr ng-repeat="raspuns in raspunsuri">
+        <td>{{$index + 1}}</td>
+        <td ng-repeat="intrebare in formular">{{raspuns[intrebare._id]}}</td>
+    </tr>
+</table>

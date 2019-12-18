@@ -1,0 +1,79 @@
+<br>
+<div class="container" name="geerareForm">
+    <div class="card">
+        <div class="card-header">
+            <h3>Creere formular de aplicare</h3>
+        </div>
+        <div class="card-body">
+            <form>
+                <div ng-repeat="intrebare in intrebari track by $index">
+                    <div style="padding-top: 10px;"></div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div ng-show="intrebare.mesaj" class="alert alert-danger" role="alert">
+                                {{intrebare.mesaj}}
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col">
+                                        <select class="form-control" ng-model="intrebare.tip" ng-options="tip.tip for tip in tipuri"></select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <center>
+                                            <button type="button" class="btn btn-danger" ng-click="intrebari.splice($index,1)">Sterge</button>
+                                        </center>
+                                    </div>
+                                </div>
+                                <br>
+                                <input ng-show="intrebare.tip" type="text" class="form-control" placeholder="Intrebare"
+                                    ng-model="intrebare.intrebare">
+                                <div ng-show="intrebare.tip.id>2 && intrebare.tip.id != 5">
+                                    <br>
+                                    <div ng-repeat="parametru in intrebare.parametri track by $index">
+                                        <div class="row">
+                                            <div class="col">
+                                                {{parametru}}
+                                            </div>
+                                            <div class="col-1">
+                                                <button type="button" class="btn btn-light" ng-click="intrebare.parametri.splice($index,1)">&times;</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <input type="text" class="form-control" ng-model="intrebare.aux">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <center>
+                                                <button type="button" class="btn btn-secondary" ng-click="intrebare.parametri.push(intrebare.aux);intrebare.aux=''">Adauga</button>
+                                            </center>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div ng-show="intrebare.tip.id==5">
+                                    <br>
+                                    <div class="row">
+                                        <div class="col">
+                                            <input type="number" class="form-control" ng-model="intrebare.min"
+                                                placeholder="Min">
+                                        </div>
+                                        <div class="col">
+                                            <input type="number" class="form-control" ng-model="intrebare.max"
+                                                placeholder="Max">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <center><button type="button" class="btn btn-primary" ng-click="intrebari.push({'parametri':[]})">Adauga
+                        intrebare</button></center>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success" ng-click="trimite()">Creeaza</button>
+        </div>
+    </div>
+</div>

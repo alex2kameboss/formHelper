@@ -1,0 +1,48 @@
+<br>
+<div class="container">
+    <div class="card">
+        <div class="card-header">Aplicare formular</div>
+        <div class="card-body">
+            <form>
+                <div ng-repeat="intrebare in formular track by $index">
+                    <div class="form-group">
+                        <label class="card-title">{{intrebare.intrebareText}}</label>
+
+                        <div ng-show="intrebare.intrebareTip == 0">
+                            <textarea class="form-control" placeholder="Raspunsl tau aici" rows="5" ng-model="intrebare.raspuns"></textarea>
+                        </div>
+                        <div ng-show="intrebare.intrebareTip == 1">
+                            <input class="form-control" type="text" ng-model="intrebare.raspuns" placeholder="Raspunsul tau aici">
+                        </div>
+                        <div ng-show="intrebare.intrebareTip == 2">
+                            <input class="form-control" type="number" placeholder="Raspunsul tau aici" ng-model="intrebare.raspuns">
+                        </div>
+                        <div ng-show="intrebare.intrebareTip == 3">
+                            <div ng-repeat="parametru in intrebare.parametri track by $index">
+                                <input type="radio" ng-model="intrebare.raspuns" ng-value="parametru">
+                                {{parametru}}
+                            </div>
+                        </div>
+                        <div ng-show="intrebare.intrebareTip == 4">
+                            <div ng-repeat="parametru in intrebare.parametri track by $index">
+                                <input type="checkbox" ng-model="intrebare.raspuns[$index]">
+                                {{parametru}}
+                            </div>
+                        </div>
+                        <div ng-show="intrebare.intrebareTip == 5">
+                            <input class="form-control-range" type="range" min="{{intrebare.parametri[0]}}" max="{{intrebare.parametri[1]}}"
+                                ng-model="intrebare.slider" ng-value="{{intrebare.parametri[0]}}">
+                            <input class="form-control" type="number" min="{{intrebare.parametri[0]}}" max="{{intrebare.parametri[1]}}"
+                                ng-model="intrebare.slider" ng-value="{{intrebare.parametri[0]}}">
+                        </div>
+
+                        <br>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-success" ng-click="trimite()">Trimite</button>
+        </div>
+    </div>
+</div>

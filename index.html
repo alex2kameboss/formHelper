@@ -1,0 +1,49 @@
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+
+    <script src="/formHelper.js"></script>
+
+</head>
+
+<body ng-app="app" ng-controller="test">
+    <br>
+    <center><h1>Exemplu de utilizare formHelper</h1></center>
+
+    <generare-formular ng-show="form.length==0" salvare="setForm(formular)"></generare-formular>
+
+    <vizualizare-formular ng-hide="form.length==0"  formular="form" rezultat="callback(raspuns)"></vizualizare-formular>
+
+    <raspunsuri-formular ng-hide="form.length==0"  formular="form" raspunsuri="raspunsuri"></raspunsuri-formular>
+
+    <script>
+        var app = angular.module('app', ['form-helper']);
+
+        app.controller('test', function ($scope) {
+            $scope.form = [];
+            $scope.raspunsuri = [];
+
+            $scope.setForm = function (formular) {
+                console.log(formular);
+                $scope.form = formular;
+            };
+
+            $scope.callback = function (raspuns) {
+                console.log(raspuns);
+                $scope.raspunsuri.push(raspuns);
+            }
+
+        });
+    </script>
+</body>
+
+</html>
