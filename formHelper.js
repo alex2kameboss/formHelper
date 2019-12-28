@@ -113,7 +113,7 @@
 
         return {
             restrict: 'E',
-            templateUrl: '/htm/generareForm.htm',
+            templateUrl: 'htm/generareForm.htm',
             scope: {
                 salvare: '&'
             },
@@ -147,7 +147,7 @@
 
         return {
             restrict: 'E',
-            templateUrl: '/htm/vizualizareForm.htm',
+            templateUrl: 'htm/vizualizareForm.htm',
             scope: {
                 formular: '=',
                 rezultat: '&'
@@ -159,7 +159,7 @@
     app.directive('raspunsuriFormular', function () {
         return {
             restrict: 'E',
-            templateUrl: '/htm/vizualizareRaspunsuri.htm',
+            templateUrl: 'htm/vizualizareRaspunsuri.htm',
             scope: {
                 formular: '=',
                 raspunsuri: '='
